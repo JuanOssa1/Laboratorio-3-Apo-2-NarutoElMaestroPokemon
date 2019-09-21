@@ -29,7 +29,7 @@ public class Clan {
 	public void setFirst(NarutoCharacter first) {
 		this.first = first;
 	}
-	@Override
+	@Override 
 	public String toString() {
 		return "Clan [name=" + name + "]" + "\n";
 	}
@@ -39,7 +39,8 @@ public class Clan {
 		return naru;
 	}
 	*/
-	public void addCharacterToTheList(String name, String personality, String creationDate, int powerAbility) {
+	public void addCharacterToTheList(String name, String personality, String creationDate, int powerAbility) throws thatNameIsUsedNowException {
+		validateAvaiableNameForCharacter(name);
 		NarutoCharacter naru = new NarutoCharacter(name, personality, creationDate, powerAbility);
 		if(first == null) {	
 			first = naru;
@@ -124,6 +125,18 @@ public class Clan {
 		}
 		return msg;
 	}
+	public String showCharacters() {
+		NarutoCharacter newReference = first;
+		String msg = "";
+		while(newReference != null) {
+			msg += newReference.toString();	
+			newReference = newReference.getNext();
+		}
+		if(msg == "") {
+			msg = "No encontre nada!";
+		}
+		return msg;
+	}
 	public String updatePokemonNarutoData(String name, String personality, String creationDate, int powerAbility) {
 		NarutoCharacter characterToUpdate = first;
 		String msg = "";
@@ -168,7 +181,21 @@ public class Clan {
 		characterN.addTechniqueToTheList(abilityName, influenceFactor);
 		return "";
 	}
-	
+	private void validateAvaiableNameForCharacter(String name) throws thatNameIsUsedNowException{
+		NarutoCharacter newReference = first;
+		NarutoCharacter info = null;
+		boolean centinel = false;
+		while(newReference != null && centinel == false) {
+			if(newReference.getName().equals(name)) {
+				centinel = true;
+				throw new thatNameIsUsedNowException("Error!");
+				
+			}
+			newReference = newReference.getNext();
+		}
+		
+		
+	}
 	//cual es la estrategia para encontar en anterior en una lista siple enlazada
 	//como diferencio todos los metodos de recorrido se me olvidan siempre que los voy a hacer
 	//como hago los test

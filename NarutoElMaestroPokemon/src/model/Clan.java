@@ -1,6 +1,6 @@
 package model;
 
-public class Clan {
+public class Clan extends ComparatorName{
 	
 	private String name;
 	private int tamanio;
@@ -210,6 +210,58 @@ public class Clan {
 		String msg = "";
 		NarutoCharacter characterNaruto = searchNarutoCharacter(characterName);
 		msg = characterNaruto.showCharacterTechniques();
+		return msg;
+	}
+	public String deleteCharacterTechnique(String characterName, String characterTechnique) throws noCharacterFindedException, noTechniqueFindedException {
+		String msg = "";
+		NarutoCharacter characterNaruto = searchNarutoCharacter(characterName);
+		msg = characterNaruto.generalDeleteOfTechnique(characterTechnique);
+		return msg;
+	}
+	public int calculateTotalPowerOfThecharacter(String characterName) throws noCharacterFindedException, noTechniqueFindedException {
+		int power = 0;
+		NarutoCharacter characterNaruto = searchNarutoCharacter(characterName);
+		int defaultPower = characterNaruto.getPowerAbility();
+		int parcialPower = characterNaruto.totalPowerOfTheCharacter();
+		int totalPower = defaultPower*parcialPower;
+		return totalPower;
+		
+	}
+	public String organizeListWithBubble() {
+		String msg = "SALI";
+		NarutoCharacter newPrevius = null;
+		NarutoCharacter newNext = null;
+		NarutoCharacter oToOrganize = first;
+		ComparatorName compareName = new ComparatorName();
+		int bigger = 0;
+		while(oToOrganize != null ) {
+			System.out.println("Bucle en el while no puedo salir");
+			newNext = oToOrganize.getNext();
+			newPrevius = oToOrganize.getPrevius();
+			if(newPrevius != null && newNext != null) {
+				bigger = compareName.compare(newPrevius, oToOrganize);
+				System.out.println("Falla en el primer if");
+				if(bigger > 0) {
+					newPrevius.setNext(first.getNext());
+					newPrevius.setPrevius(first);
+					newNext.setPrevius(first.getPrevius());
+					first.setNext(first.getPrevius());
+					first.setPrevius(null);
+					System.out.println("Falla en el segundo if");
+				}
+			}
+			else if(newPrevius == null && newNext == null) {
+				
+			}
+			else if(newPrevius != null && newNext == null) {
+				
+			}
+			else if(newPrevius == null && newNext != null) {
+				
+			}
+		
+		oToOrganize = oToOrganize.getNext();
+		}
 		return msg;
 	}
 	//cual es la estrategia para encontar en anterior en una lista siple enlazada

@@ -103,11 +103,16 @@ public class NarutoCharacter {
 			throw new noTechniqueFindedException("Error!");
 		}
 	}
-	public void generalDeleteOfTechnique(String name) throws noTechniqueFindedException {
+	public String generalDeleteOfTechnique(String name) throws noTechniqueFindedException {
+		String msg = "";
 		Technique tech = first;
-		Technique tmp = null;
+		//Technique tmp = null;
+		if(tech== null) {
+			throw new noTechniqueFindedException("Error!");
+		}
 		while(tech != null) {
 			if(tech.getName().equals(name)) {
+				msg = tech.toString();
 				if(tech.getNext() != null) {
 					deleteWhennextAreNotNull(name);
 				}else if(tech.getNext() == null) {
@@ -116,9 +121,7 @@ public class NarutoCharacter {
 			}
 			tech = tech.getNext();
 		}
-		if(tech== null) {
-			throw new noTechniqueFindedException("Error!");
-		}
+		return msg;
 	}
 	public String showCharacterTechniques() throws noTechniqueFindedException {
 		Technique tech = first;
@@ -128,6 +131,18 @@ public class NarutoCharacter {
 		}
 		while(tech != null) {
 			msg +=tech.toString();
+			tech = tech.getNext();
+		}
+		return msg;
+	}
+	public int totalPowerOfTheCharacter() throws noTechniqueFindedException {
+		Technique tech = first;
+		int msg = 0;
+		if(tech == null) {
+			throw new noTechniqueFindedException("Error!");
+		}
+		while(tech != null) {
+			msg +=tech.getInfluenceFactor();
 			tech = tech.getNext();
 		}
 		return msg;

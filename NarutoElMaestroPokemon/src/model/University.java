@@ -193,8 +193,61 @@ public class University {
 		} catch (noCharacterFindedException e) {
 			msg = "No se ha encontrado un personaje con ese nombre";
 		}
-		
 		return msg;
+	}
+	public String deleteCharacterTechnique(String clanName, String characterName, String characterTechnique) {
+		String msg = "";
+		Clan clanOfTheCharacter = null;
+		try {
+			clanOfTheCharacter = searchClan(clanName);
+			msg = clanOfTheCharacter.deleteCharacterTechnique(characterName, characterTechnique);
+		} catch (noClanFindedException e) {
+			msg = "No se ha encontrado ningun clan con ese nombre";
+		} catch (theArrayListIsEmptyException e) {
+			msg = "No hay clanes creados";
+		} catch (noCharacterFindedException e) {
+			msg = "No se a encontrado un personaje con ese nombre";
+		} catch (noTechniqueFindedException e) {
+			msg = "No se ha encontrado una tecnica con ese nombre";
+		}
+		return msg;
+	}
+	public int calculateTotalPowerOfACharacter(String clanName, String characterName) {
+		int power = 0;
+		Clan clanOfTheCharacter = null;
+		try {
+			clanOfTheCharacter = searchClan(clanName);
+			power = clanOfTheCharacter.calculateTotalPowerOfThecharacter(characterName);
+		} catch (noClanFindedException e) {
+			power = 1111111111;
+			e.printStackTrace();
+		} catch (theArrayListIsEmptyException e) {
+			power = 1111111111;
+			e.printStackTrace();
+		} catch (noCharacterFindedException e) {
+			power = 1111111111;
+			e.printStackTrace();
+		} catch (noTechniqueFindedException e) {
+			power = 1111111111;
+			e.printStackTrace();
+		}
+		
+		return power;
+	}
+	public String organizeListOfCharacters(String clanName) {
+		String msg = "";
+		Clan clanOfTheCharacter = null;
+		try {
+			clanOfTheCharacter = searchClan(clanName);
+			msg = clanOfTheCharacter.organizeListWithBubble();
+		} catch (noClanFindedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (theArrayListIsEmptyException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return msg; 
 	}
 	
 }

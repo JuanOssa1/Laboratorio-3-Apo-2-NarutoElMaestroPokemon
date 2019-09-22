@@ -72,7 +72,8 @@ public class Main {
 		}else if(option == 6) {
 			System.out.println("Ingrese la id del clan al cual le quiere mostar los personajes");
 			String clanName = dataRead.nextLine();
-			System.out.println(happyuniversity.showCharactersInAClan(clanName));
+			//System.out.println(happyuniversity.organizeListOfCharacters(clanName));
+			System.out.println(happyuniversity.organizeListOfCharacters(clanName) +happyuniversity.showCharactersInAClan(clanName));
 			menu(0);
 		}else if(option == 7) {
 			System.out.println("Modificar atributos de un personaje");
@@ -114,10 +115,28 @@ public class Main {
 			System.out.println("Tecnica agregada al personaje: " + happyuniversity.addTechniquetoAcharacter(clanName, characterNaruto, technique, influenceFactor));
 			menu(0);
 		}else if(option == 10) {
-			
+			System.out.println("Ingrese el clan dodne se encuentra el personaje");
+			String clanName = dataRead.nextLine();
+			System.out.println("Ingrese el el nombre del personaje");
+			String characterName = dataRead.nextLine();
+			System.out.println("Las tecnicas del personaje son: "+ happyuniversity.showCharacterTechniques(clanName, characterName));
+			menu(0);
 		}else if(option == 11) {
-			
+			System.out.println("Ingrese el clan donde se encuentra el personaje");
+			String clanName = dataRead.nextLine();
+			System.out.println("Ingrese el del nombre del personaje al cual le quiere eliminar la tecnica");
+			String characterName = dataRead.nextLine();
+			System.out.println("Ingrese el nombre de la tecnica que quiere eliminar");
+			String techniqueToDelete = dataRead.nextLine();
+			System.out.println("La tecnica eliminada fue: "+happyuniversity.deleteCharacterTechnique(clanName, characterName, techniqueToDelete));
+			menu(0);
 		}else if(option == 12) {
+			System.out.println("Ingrese el clan donde se encuentra el personaje");
+			String clanName = dataRead.nextLine();
+			System.out.println("Ingrese el del nombre del personaje al cual le quiere eliminar la tecnica");
+			String characterName = dataRead.nextLine();
+			System.out.println("El poder total del personaje: "+""+ characterName +" "+happyuniversity.calculateTotalPowerOfACharacter(clanName, characterName));
+		}else if(option == 13) {
 			System.out.println("BAI BAI!");
 		}
 	}
@@ -135,6 +154,8 @@ public class Main {
 		System.out.println("9.  Aniadir una tecnica a un personaje");
 		System.out.println("10. Mostar tecnicas de un personaje");																												
 		System.out.println("11. Eliminar una tecnica");
+		System.out.println("12. Calcular poder total de un personaje");
+		System.out.println("1. Salvar cambios y cerrar programa");
 	
 		
 		

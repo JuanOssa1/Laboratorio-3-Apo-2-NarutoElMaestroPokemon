@@ -103,7 +103,16 @@ public class Main {
 			System.out.println("El personaje eliminado fue: " + happyuniversity.deleteCharacter(clanName, narutoCharacter));
 			menu(0);
 		}else if(option == 9) {
-			
+			System.out.println("Ingrese el nombre del clan donde se encuentra el personaje para aniadir la tecnica");
+			String clanName = dataRead.nextLine();
+			System.out.println("Ingrese el nombre del personaje al cual le quiere agregar la habilidad");
+			String characterNaruto = dataRead.nextLine();
+			System.out.println("Ingrese el nombre de la tecnica");
+			String technique = dataRead.nextLine();
+			System.out.println("Ingrese el factor de influencia");
+			int influenceFactor = dataRead.nextInt(); dataRead.nextLine();
+			System.out.println("Tecnica agregada al personaje: " + happyuniversity.addTechniquetoAcharacter(clanName, characterNaruto, technique, influenceFactor));
+			menu(0);
 		}else if(option == 10) {
 			
 		}else if(option == 11) {
@@ -124,7 +133,7 @@ public class Main {
 		System.out.println("7.  Modificar atributos de un personaje");
 		System.out.println("8.  Eliminar un personaje");
 		System.out.println("9.  Aniadir una tecnica a un personaje");
-		System.out.println("10. Buscar una tecnica");																												
+		System.out.println("10. Mostar tecnicas de un personaje");																												
 		System.out.println("11. Eliminar una tecnica");
 	
 		

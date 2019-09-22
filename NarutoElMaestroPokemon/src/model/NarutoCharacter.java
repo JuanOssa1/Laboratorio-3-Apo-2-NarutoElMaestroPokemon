@@ -120,9 +120,12 @@ public class NarutoCharacter {
 			throw new noTechniqueFindedException("Error!");
 		}
 	}
-	public String showCharacterTechniques() {
+	public String showCharacterTechniques() throws noTechniqueFindedException {
 		Technique tech = first;
 		String msg = "";
+		if(tech == null) {
+			throw new noTechniqueFindedException("Error!");
+		}
 		while(tech != null) {
 			msg +=tech.toString();
 			tech = tech.getNext();

@@ -74,7 +74,7 @@ public class University {
 			msg = "No hay clanes";
 		}
 		try {
-			askedclan.addTechniqueToACharacter(techniqueName, abilityName, influenceFactor);
+			askedclan.addTechniquetoACharacter(techniqueName, abilityName, influenceFactor);
 			msg = "Todo ha funcionado sin problemas";
 		} catch (noCharacterFindedException e) {
 			msg = "Senior usuario ese personaje no existe";
@@ -163,8 +163,37 @@ public class University {
 	 
 		return msg;
 	}
-	public String addTechniquetoAcharacter(String clanName, String name, int influenceFactor) {
+	public String addTechniquetoAcharacter(String clanName, String characterName,String techniqueName, int influenceFactor) {
 		String msg = "";
+		Clan clanOfTheCharacter = null;
+		try {
+			clanOfTheCharacter = searchClan(clanName);
+			msg = clanOfTheCharacter.addTechniquetoACharacter(characterName, techniqueName, influenceFactor);
+		} catch (noClanFindedException e) {
+			msg = "El clan no fue encontrado";
+		} catch (theArrayListIsEmptyException e) {
+			msg = "No hay clanes agregados todavia";
+		} catch (noCharacterFindedException e) {
+			msg = "No existe un personaje con ese nombre";
+		}
+		return msg;
+	}
+	public String showCharacterTechniques(String clanName, String characterName) {
+		String msg = "";
+		Clan clanOfTheCharacter = null;
+		try {
+			clanOfTheCharacter = searchClan(clanName);
+			msg = clanOfTheCharacter.showCharacterTechniques(characterName);
+		} catch (noClanFindedException e) {
+			msg = "No se ha encontrado ningun clan con ese nombre";
+		} catch (theArrayListIsEmptyException e) {
+			msg = "No hay clanes creados";
+		} catch (noTechniqueFindedException e) {
+			msg = "No se han encontrado tecnicas en este personaje";
+		} catch (noCharacterFindedException e) {
+			msg = "No se ha encontrado un personaje con ese nombre";
+		}
+		
 		return msg;
 	}
 	

@@ -176,11 +176,6 @@ public class Clan {
 		return info;
 	}
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	public String addTechniqueToACharacter(String name,String abilityName, int influenceFactor) throws noCharacterFindedException {
-		NarutoCharacter characterN = searchNarutoCharacter(name);
-		characterN.addTechniqueToTheList(abilityName, influenceFactor);
-		return "";
-	}
 	private void validateAvaiableNameForCharacter(String name) throws thatNameIsUsedNowException{
 		NarutoCharacter newReference = first;
 		NarutoCharacter info = null;
@@ -188,13 +183,10 @@ public class Clan {
 		while(newReference != null && centinel == false) {
 			if(newReference.getName().equals(name)) {
 				centinel = true;
-				throw new thatNameIsUsedNowException("Error!");
-				
+				throw new thatNameIsUsedNowException("Error!");	
 			}
 			newReference = newReference.getNext();
-		}
-		
-		
+		}	
 	}
 	public String changeCharacterInfo(String currentName, String newCharacterName, String personality, int powerAbility, String creationDate) throws noCharacterFindedException, thatNameIsUsedNowException {
 		String msg = "";
@@ -211,6 +203,13 @@ public class Clan {
 		String msg = "";
 		NarutoCharacter characterNaruto = searchNarutoCharacter(characterName);
 		characterNaruto.addTechniqueToTheList(techniqueName, influenceFactor);
+		msg = characterNaruto.toString();
+		return msg;
+	}
+	public String showCharacterTechniques(String characterName) throws noTechniqueFindedException, noCharacterFindedException {
+		String msg = "";
+		NarutoCharacter characterNaruto = searchNarutoCharacter(characterName);
+		msg = characterNaruto.showCharacterTechniques();
 		return msg;
 	}
 	//cual es la estrategia para encontar en anterior en una lista siple enlazada

@@ -247,25 +247,10 @@ public class Clan extends ComparatorName{
 					oToOrganize.getPrevius().setNext(oToOrganize.getNext());
 					oToOrganize.getPrevius().setPrevius(oToOrganize);
 					oToOrganize.getNext().setPrevius(oToOrganize.getPrevius());
-					
-					/*
-					newPrevius.setNext(oToOrganize.getNext());
-					newPrevius.setPrevius(oToOrganize);
-					newNext.setPrevius(oToOrganize.getPrevius());
 					oToOrganize.setNext(oToOrganize.getPrevius());
-					oToOrganize.setPrevius(null);
-					*/
 					System.out.println("Falla en el segundo if");			
 				}
 			}
-			/*
-			else if(newPrevius == null && newNext == null) {
-				bigger = compareName.compare(newPrevius, oToOrganize);
-				if(bigger > 0) {
-					first = oToOrganize;
-				}
-			}
-			*/
 			else if(newPrevius == null && newNext != null) {
 				bigger = compareName.compare(oToOrganize, newNext);
 				if(bigger > 0) {
@@ -273,6 +258,7 @@ public class Clan extends ComparatorName{
 					newNext.getPrevius().setNext(newNext.getNext());
 					newNext.getPrevius().setPrevius(newNext);
 					newNext.getNext().setPrevius(newNext.getPrevius());
+					newNext.setNext(newNext.getPrevius());
 					
 				}
 			}

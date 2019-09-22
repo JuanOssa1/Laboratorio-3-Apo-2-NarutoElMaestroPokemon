@@ -1,5 +1,6 @@
 package main;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import model.University;
@@ -24,8 +25,10 @@ public class Main {
 		int option = myOption;
 		if(option == 0) {
 			showMenuOptions();
-			option = dataRead.nextInt();
-			dataRead.nextLine();
+			
+				option = dataRead.nextInt();dataRead.nextLine();
+				
+			
 		}
 		if(option == 1) {
 			System.out.println("Ingrese el nombre del clan");
@@ -33,14 +36,14 @@ public class Main {
 			System.out.println(happyuniversity.createNewClan(clanName));
 			menu(0);
 		}else if(option == 2) {
-			System.out.println("Ingrese el nombre del clan");
-			String clanName = dataRead.nextLine();
+			//System.out.println("Ingrese el nombre del clan");
+			//String clanName = dataRead.nextLine();
 			System.out.println(happyuniversity.showClans());
 			menu(0);
 		}else if(option == 3) {
 			System.out.println("Ingrese el nombre nuevo del clan");
 			String newName = dataRead.nextLine();
-			System.out.println(happyuniversity);
+			System.out.println(happyuniversity.changeClanName(newName));
 		}else if(option == 4) {
 			System.out.println("Ingrese el nombre del clan que quiere eliminar");
 			String clanName = dataRead.nextLine();
@@ -72,9 +75,33 @@ public class Main {
 			System.out.println(happyuniversity.showCharactersInAClan(clanName));
 			menu(0);
 		}else if(option == 7) {
-			
+			System.out.println("Modificar atributos de un personaje");
+			System.out.println("Ingrese el nombre del clan al cual el personaje hace parte");
+			String clanName = dataRead.nextLine();
+			System.out.println("Ingrese el nombre actual del personaje");
+			String currentName = dataRead.nextLine();
+			System.out.println("Ingrese el nuevo nombre del personaje");
+			String newCharacterName = dataRead.nextLine();
+			System.out.println("Ingrese la nueva personalidad");
+			String personality = dataRead.nextLine();
+			System.out.println("Ingrese el nuevo poder");
+			int powerAbility = dataRead.nextInt(); dataRead.nextLine();
+			System.out.println("Ingrese el nuevo dia de creacion");
+			String newDay = dataRead.nextLine();
+			System.out.println("Ingrese el nuevo mes de creacion");
+			String newMonth = dataRead.nextLine();
+			System.out.println("Ingrese el nuevo anio de creacion");
+			String newYear = dataRead.nextLine();
+			String completeNewDate = newDay+"/"+newMonth+"/"+newYear;
+			System.out.println("El personaje que se cambio fue: " + happyuniversity.changeCharacterAtributes(clanName, currentName, newCharacterName, personality, completeNewDate, powerAbility));
+			menu(0);
 		}else if(option == 8) { 
-			
+			System.out.println("Ingrese el nombre del clan del personaje");
+			String clanName = dataRead.nextLine();
+			System.out.println("Ingrese el nombre del personaje que quiere eliminar");
+			String narutoCharacter = dataRead.nextLine();
+			System.out.println("El personaje eliminado fue: " + happyuniversity.deleteCharacter(clanName, narutoCharacter));
+			menu(0);
 		}else if(option == 9) {
 			
 		}else if(option == 10) {
@@ -96,7 +123,7 @@ public class Main {
 		System.out.println("6.  Mostrar personajes en un clan");
 		System.out.println("7.  Modificar atributos de un personaje");
 		System.out.println("8.  Eliminar un personaje");
-		System.out.println("9.  Crear una tecnica");
+		System.out.println("9.  Aniadir una tecnica a un personaje");
 		System.out.println("10. Buscar una tecnica");																												
 		System.out.println("11. Eliminar una tecnica");
 	

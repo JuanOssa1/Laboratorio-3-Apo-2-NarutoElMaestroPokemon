@@ -53,7 +53,7 @@ public class Clan {
 			naru.setPrevius(newReference);
 		}
 	}
-	public String deleteCharacterOfTheList(String name) {
+	public String deleteCharacterOfTheList(String name) throws noCharacterFindedException {
 		NarutoCharacter newReference = first;
 		NarutoCharacter before = null;
 		NarutoCharacter after = null;
@@ -79,10 +79,10 @@ public class Clan {
 					beforeAreNull(newReference);
 				}
 			}
-			else {
-				msg = "No hay nada de lo que me pides";
-			}
 			newReference = newReference.getNext();
+		}
+		if(msg == "") {
+			throw new noCharacterFindedException("Error!");
 		}
 		return msg;
 	}
@@ -195,6 +195,23 @@ public class Clan {
 		}
 		
 		
+	}
+	public String changeCharacterInfo(String currentName, String newCharacterName, String personality, int powerAbility, String creationDate) throws noCharacterFindedException, thatNameIsUsedNowException {
+		String msg = "";
+		NarutoCharacter characterNaruto = searchNarutoCharacter(currentName);
+		validateAvaiableNameForCharacter(newCharacterName);
+		msg =  characterNaruto.toString();
+		characterNaruto.setName(newCharacterName);
+		characterNaruto.setPersonality(personality);
+		characterNaruto.setPowerAbility(powerAbility);
+		characterNaruto.setCreationDate(creationDate);
+		return msg;
+	}
+	public String addTechniquetoACharacter(String characterName, String techniqueName, int influenceFactor) throws noCharacterFindedException {
+		String msg = "";
+		NarutoCharacter characterNaruto = searchNarutoCharacter(characterName);
+		characterNaruto.addTechniqueToTheList(techniqueName, influenceFactor);
+		return msg;
 	}
 	//cual es la estrategia para encontar en anterior en una lista siple enlazada
 	//como diferencio todos los metodos de recorrido se me olvidan siempre que los voy a hacer

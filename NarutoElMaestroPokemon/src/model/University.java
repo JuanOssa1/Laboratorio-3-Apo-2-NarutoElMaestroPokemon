@@ -131,4 +131,41 @@ public class University {
 		}
 		return msg;
 	}
+	public String changeCharacterAtributes(String clanName,String currentName, String charactername, String personality, String creationDate, int powerAbility) {
+		String msg = "";
+		try {
+			Clan clanOfTheCharacter = searchClan(clanName);
+			msg = clanOfTheCharacter.changeCharacterInfo(currentName, charactername, personality, powerAbility, creationDate);
+		} catch (theArrayListIsEmptyException e) {
+			msg = "No hay clanes crados";
+		} catch (noClanFindedException e){
+			msg = "En clan aparentemente no existe";
+		} catch (noCharacterFindedException e){
+			msg = "El nombre del personaje ingresado por parametro no existe";
+		} catch (thatNameIsUsedNowException e) {
+			msg = "El nombre de ese personaje ya esta usado";
+		}
+		return msg;
+	}
+	public String deleteCharacter(String clanName, String name) {
+		String msg = "";
+		Clan clanOfTheCharacter = null;
+		try {
+			clanOfTheCharacter = searchClan(clanName);
+			msg = clanOfTheCharacter.deleteCharacterOfTheList(name);
+		} catch (noClanFindedException e) {
+			msg = "El clan buscado no existe";
+		} catch (theArrayListIsEmptyException e) {
+			msg = "No se han agregado clanes todavia";
+		} catch (noCharacterFindedException e) {
+			msg = "El personaje buscado para eliminar no existe";
+		}
+	 
+		return msg;
+	}
+	public String addTechniquetoAcharacter(String clanName, String name, int influenceFactor) {
+		String msg = "";
+		return msg;
+	}
+	
 }

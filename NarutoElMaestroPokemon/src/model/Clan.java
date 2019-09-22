@@ -229,6 +229,7 @@ public class Clan extends ComparatorName{
 	}
 	public String organizeListWithBubble() {
 		String msg = "SALI";
+		int movement = 0;
 		NarutoCharacter newPrevius = null;
 		NarutoCharacter newNext = null;
 		NarutoCharacter oToOrganize = first;
@@ -242,28 +243,44 @@ public class Clan extends ComparatorName{
 				bigger = compareName.compare(newPrevius, oToOrganize);
 				System.out.println("Falla en el primer if");
 				if(bigger > 0) {
-					newPrevius.setNext(first.getNext());
-					newPrevius.setPrevius(first);
-					newNext.setPrevius(first.getPrevius());
-					first.setNext(first.getPrevius());
-					first.setPrevius(null);
-					System.out.println("Falla en el segundo if");
+					first = oToOrganize;
+					oToOrganize.getPrevius().setNext(oToOrganize.getNext());
+					oToOrganize.getPrevius().setPrevius(oToOrganize);
+					oToOrganize.getNext().setPrevius(oToOrganize.getPrevius());
+					
+					/*
+					newPrevius.setNext(oToOrganize.getNext());
+					newPrevius.setPrevius(oToOrganize);
+					newNext.setPrevius(oToOrganize.getPrevius());
+					oToOrganize.setNext(oToOrganize.getPrevius());
+					oToOrganize.setPrevius(null);
+					*/
+					System.out.println("Falla en el segundo if");			
 				}
 			}
+			/*
 			else if(newPrevius == null && newNext == null) {
-				
+				bigger = compareName.compare(newPrevius, oToOrganize);
+				if(bigger > 0) {
+					first = oToOrganize;
+				}
 			}
-			else if(newPrevius != null && newNext == null) {
-				
-			}
+			*/
 			else if(newPrevius == null && newNext != null) {
-				
+				bigger = compareName.compare(oToOrganize, newNext);
+				if(bigger > 0) {
+					first = newNext;
+					newNext.getPrevius().setNext(newNext.getNext());
+					newNext.getPrevius().setPrevius(newNext);
+					newNext.getNext().setPrevius(newNext.getPrevius());
+					
+				}
 			}
-		
 		oToOrganize = oToOrganize.getNext();
 		}
 		return msg;
 	}
+	
 	//cual es la estrategia para encontar en anterior en una lista siple enlazada
 	//como diferencio todos los metodos de recorrido se me olvidan siempre que los voy a hacer
 	//como hago los test

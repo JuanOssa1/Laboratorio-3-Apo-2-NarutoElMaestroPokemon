@@ -72,8 +72,8 @@ public class Main {
 		}else if(option == 6) {
 			System.out.println("Ingrese la id del clan al cual le quiere mostar los personajes");
 			String clanName = dataRead.nextLine();
-			//System.out.println(happyuniversity.organizeListOfCharacters(clanName));
-			System.out.println(happyuniversity.organizeListOfCharacters(clanName) +happyuniversity.showCharactersInAClan(clanName));
+			System.out.println(happyuniversity.organizeListOfCharacters(clanName));
+			System.out.println(happyuniversity.showCharactersInAClan(clanName));
 			menu(0);
 		}else if(option == 7) {
 			System.out.println("Modificar atributos de un personaje");

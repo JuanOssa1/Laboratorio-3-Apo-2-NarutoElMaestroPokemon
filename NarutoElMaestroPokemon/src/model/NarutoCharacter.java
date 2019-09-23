@@ -155,7 +155,7 @@ public class NarutoCharacter {
 		Technique oToOrganize = first;
 		Technique tmpNextOfFirst = first;
 		Technique previus = null;
-		while(movement < countNumberOfCharacters()) {
+		//while(movement < countNumberOfCharacters()) {
 			while(oToOrganize != null ) {
 				if(newNext != null) {
 					bigger =  oToOrganize.compareTo(newNext);
@@ -180,7 +180,7 @@ public class NarutoCharacter {
 				*/
 				   oToOrganize = oToOrganize.getNext();
 				}
-		}
+		//}
 		
 		
 		}

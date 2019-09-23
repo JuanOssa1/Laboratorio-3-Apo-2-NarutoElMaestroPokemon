@@ -235,11 +235,11 @@ public class University {
 		return power;
 	}
 	public String organizeListOfCharacters(String clanName) {
-		String msg = ""; 
+		String msg = "";
 		Clan clanOfTheCharacter = null;
 		try {
 			clanOfTheCharacter = searchClan(clanName);
-			clanOfTheCharacter.organizeListWithBubble();
+			msg = clanOfTheCharacter.organizeListWithBubble();
 		} catch (noClanFindedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

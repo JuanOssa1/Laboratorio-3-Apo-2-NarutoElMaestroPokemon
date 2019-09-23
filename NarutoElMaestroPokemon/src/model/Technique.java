@@ -1,6 +1,6 @@
 package model;
 
-public class Technique {
+public class Technique implements Comparable<Technique>{
 	private String name;
 	private int influenceFactor;
 	private Technique next;	
@@ -25,8 +25,11 @@ public class Technique {
 	public Technique getNext() {
 		return next;
 	}
-	public void setNext(Technique next) {
+	public void setNext(Technique next) { 
 		this.next = next;
+	}
+	public int compareTo(Technique technique) {
+		return technique.getName().compareTo(name);
 	}
 	@Override
 	public String toString() {

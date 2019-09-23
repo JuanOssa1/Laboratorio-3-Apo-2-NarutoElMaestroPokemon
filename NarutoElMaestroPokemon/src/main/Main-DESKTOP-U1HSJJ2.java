@@ -78,7 +78,7 @@ public class Main {
 		}else if(option == 7) {
 			System.out.println("Modificar atributos de un personaje");
 			System.out.println("Ingrese el nombre del clan al cual el personaje hace parte");
-			String clanName = dataRead.nextLine(); 
+			String clanName = dataRead.nextLine();
 			System.out.println("Ingrese el nombre actual del personaje");
 			String currentName = dataRead.nextLine();
 			System.out.println("Ingrese el nuevo nombre del personaje");

@@ -227,61 +227,44 @@ public class Clan extends ComparatorName{
 		return totalPower;
 		
 	}
-	public void organizeListWithBubble() {
-		
-		
-	 
-
+	public String organizeListWithBubble() {
+		String msg = "SALI";
+		int movement = 0;
 		NarutoCharacter newPrevius = null;
 		NarutoCharacter newNext = null;
 		NarutoCharacter oToOrganize = first;
 		ComparatorName compareName = new ComparatorName();
 		int bigger = 0;
-		
-				while(oToOrganize != null ){
-				
-				newNext = oToOrganize.getNext();
-				newPrevius = oToOrganize.getPrevius();
-				if(newPrevius != null && newNext != null) {
-					bigger = compareName.compare(newPrevius, oToOrganize);
-				
-					if(bigger > 0) {
-						first = oToOrganize;
-						oToOrganize.getPrevius().setNext(oToOrganize.getNext());
-						oToOrganize.getPrevius().setPrevius(oToOrganize);
-						oToOrganize.getNext().setPrevius(oToOrganize.getPrevius());
-						oToOrganize.setNext(oToOrganize.getPrevius());
-							
-					}
+		while(oToOrganize != null ) {
+			System.out.println("Bucle en el while no puedo salir");
+			newNext = oToOrganize.getNext();
+			newPrevius = oToOrganize.getPrevius();
+			if(newPrevius != null && newNext != null) {
+				bigger = compareName.compare(newPrevius, oToOrganize);
+				System.out.println("Falla en el primer if");
+				if(bigger > 0) {
+					first = oToOrganize;
+					oToOrganize.getPrevius().setNext(oToOrganize.getNext());
+					oToOrganize.getPrevius().setPrevius(oToOrganize);
+					oToOrganize.getNext().setPrevius(oToOrganize.getPrevius());
+					oToOrganize.setNext(oToOrganize.getPrevius());
+					System.out.println("Falla en el segundo if");			
 				}
-				else if(newPrevius == null && newNext != null) {
-					bigger = compareName.compare(oToOrganize, newNext);
-					if(bigger > 0) {
-						first = newNext;
-						newNext.getPrevius().setNext(newNext.getNext());
-						newNext.getPrevius().setPrevius(newNext);
-						newNext.getNext().setPrevius(newNext.getPrevius());
-						newNext.setNext(newNext.getPrevius());
-						
-					}
-				}
-			oToOrganize = oToOrganize.getNext();
-			
 			}
-	
-			
-		
-		
-		
-	}
-	private int countNumberOfCharacters() {
-		int counter = 0;
-		NarutoCharacter narus = first;
-		while(narus != null) {
-			counter++;
-			narus = narus.getNext();
+			else if(newPrevius == null && newNext != null) {
+				bigger = compareName.compare(oToOrganize, newNext);
+				if(bigger > 0) {
+					first = newNext;
+					newNext.getPrevius().setNext(newNext.getNext());
+					newNext.getPrevius().setPrevius(newNext);
+					newNext.getNext().setPrevius(newNext.getPrevius());
+					newNext.setNext(newNext.getPrevius());
+					
+				}
+			}
+		oToOrganize = oToOrganize.getNext();
 		}
-		return counter;
+		return msg;
 	}
 	
 	//cual es la estrategia para encontar en anterior en una lista siple enlazada

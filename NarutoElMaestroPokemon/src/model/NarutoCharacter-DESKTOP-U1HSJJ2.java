@@ -117,7 +117,7 @@ public class NarutoCharacter {
 					deleteWhennextAreNotNull(name);
 				}else if(tech.getNext() == null) {
 					deleteWhennextAreNull(name);
-				} 
+				}
 			}
 			tech = tech.getNext();
 		}
@@ -146,65 +146,6 @@ public class NarutoCharacter {
 			tech = tech.getNext();
 		}
 		return msg;
-	}
-	public void organizeTechniques() throws noTechniqueFindedException{
-		
-		int movement = 0;
-		int bigger = 0;
-		Technique newNext = null;
-		Technique oToOrganize = first;
-		Technique tmpNextOfFirst = first;
-		Technique previus = null;
-		while(movement < countNumberOfCharacters()) {
-			while(oToOrganize != null ) {
-				if(newNext != null) {
-					bigger =  oToOrganize.compareTo(newNext);
-					if(bigger > 0) {
-						oToOrganize = newNext;
-						oToOrganize.setNext(tmpNextOfFirst);
-						tmpNextOfFirst.setNext(newNext.getNext());
-						first = oToOrganize;
-					}
-				}
-				/*
-				else if(newPrevius == null && newNext != null) {
-					bigger = compareName.compare(oToOrganize, newNext);
-					if(bigger > 0) {
-						first = newNext;
-						newNext.getPrevius().setNext(newNext.getNext());
-						newNext.getPrevius().setPrevius(newNext);
-						newNext.getNext().setPrevius(newNext.getPrevius());
-						newNext.setNext(newNext.getPrevius());
-						
-					}
-				*/
-				   oToOrganize = oToOrganize.getNext();
-				}
-		}
-		
-		
-		}
-	private Technique foundPrevius(Technique tech) throws noTechniqueFindedException {
-		Technique oToOrganize = first;
-		Technique asked = null;
-		while(oToOrganize != null) {
-			if(oToOrganize.getNext().equals(tech)) {
-				asked = oToOrganize;
-			}
-			if(asked == null) {
-				throw new noTechniqueFindedException("Error!");
-			}
-		}
-		return asked;
-	}
-	private int countNumberOfCharacters() {
-		int counter = 0;
-		Technique narus = first;
-		while(narus != null) {
-			counter++;
-			narus = narus.getNext();
-		}
-		return counter;
 	}
 	
 }

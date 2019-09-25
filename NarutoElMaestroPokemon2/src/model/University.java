@@ -306,15 +306,18 @@ public class University implements Serializable{
 			e.printStackTrace();
 		}
 	}
-	public void sortClansWithSelection() {
-		ArrayList<Clan> localArrayList = clans;
-		for(int i = 0; i < localArrayList.size()-1; i++) {
-			Clan toCompare = localArrayList.get(i);
-			int position = i;
-			for(int j = i + 1; j < localArrayList.size(); j++) {
-				if(localArrayList.get(j).compareTo(toCompare)>0) {
-					
+	public void sortClansWithSelection() {	
+		for(int i = 0; i < clans.size()-1; i++) {
+			Clan small = clans.get(i);
+			int wich = i;
+			for(int j = i + 1; j < clans.size(); j++) {
+				if(clans.get(j).compareTo(small)<0) {
+					small = clans.get(j);
+					wich = j;
 				}
+				Clan tmp = clans.get(i);
+				clans.set(i, small);
+				clans.set(wich, tmp);
 			}
 		}
 	}

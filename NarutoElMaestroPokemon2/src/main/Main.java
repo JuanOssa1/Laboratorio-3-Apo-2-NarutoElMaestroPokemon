@@ -39,12 +39,14 @@ public class Main {
 		}else if(option == 2) {
 			//System.out.println("Ingrese el nombre del clan");
 			//String clanName = dataRead.nextLine();
+			happyuniversity.sortClansWithSelection();
 			System.out.println(happyuniversity.showClans());
 			menu(0);
 		}else if(option == 3) {
 			System.out.println("Ingrese el nombre nuevo del clan");
 			String newName = dataRead.nextLine();
 			System.out.println(happyuniversity.changeClanName(newName));
+			menu(0);
 		}else if(option == 4) {
 			System.out.println("Ingrese el nombre del clan que quiere eliminar");
 			String clanName = dataRead.nextLine();
@@ -137,12 +139,12 @@ public class Main {
 			System.out.println("Ingrese el del nombre del personaje al cual le quiere eliminar la tecnica");
 			String characterName = dataRead.nextLine();
 			System.out.println("El poder total del personaje: "+""+ characterName +" "+happyuniversity.calculateTotalPowerOfACharacter(clanName, characterName));
+			menu(0);
 		}else if(option == 13) {
 			happyuniversity.closeAndSavefileCreator();
 			System.out.println("BAI BAI!");
 		}else if(option == 14) {
-			//happyuniversity.startProgramLoadClans();
-			menu(0);
+			System.out.println("No guarde");
 		}
 	}
 	
@@ -160,7 +162,8 @@ public class Main {
 		System.out.println("10. Mostar tecnicas de un personaje");																												
 		System.out.println("11. Eliminar una tecnica");
 		System.out.println("12. Calcular poder total de un personaje");
-		System.out.println("1. Salvar cambios y cerrar programa");
+		System.out.println("13. Salvar cambios y cerrar programa");
+		System.out.println("14. Salir sin guardar cambios");
 	
 		
 		

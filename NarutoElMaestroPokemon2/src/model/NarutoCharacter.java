@@ -178,6 +178,7 @@ public class NarutoCharacter implements Serializable {
 						*/
 						first = oToOrganize;
 					}
+					movement++;
 				}
 				/*
 				else if(newPrevius == null && newNext != null) {

@@ -157,14 +157,25 @@ public class NarutoCharacter implements Serializable {
 		Technique oToOrganize = first;
 		Technique tmpNextOfFirst = first;
 		Technique previus = null;
-		//while(movement < countNumberOfCharacters()) {
+		while(movement < 5) {
 			while(oToOrganize != null ) {
 				if(newNext != null) {
 					bigger =  oToOrganize.compareTo(newNext);
-					if(bigger > 0) {
+					if(bigger < 0) {
+						String oToName = oToOrganize.getName();
+						int oToInfluenceFactor = oToOrganize.getInfluenceFactor();
+						String nexName = newNext.getName(); 
+						int nexInfluenceFactor = newNext.getInfluenceFactor();
+						oToOrganize.setName(nexName);
+						oToOrganize.setInfluenceFactor(nexInfluenceFactor);
+						newNext.setName(oToName);
+						newNext.setInfluenceFactor(oToInfluenceFactor);
+						
+						/*
 						oToOrganize = newNext;
 						oToOrganize.setNext(tmpNextOfFirst);
 						tmpNextOfFirst.setNext(newNext.getNext());
+						*/
 						first = oToOrganize;
 					}
 				}
@@ -182,7 +193,7 @@ public class NarutoCharacter implements Serializable {
 				*/
 				   oToOrganize = oToOrganize.getNext();
 				}
-		//}
+		}
 		
 		
 		}
